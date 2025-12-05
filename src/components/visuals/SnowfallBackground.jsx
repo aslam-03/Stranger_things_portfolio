@@ -13,6 +13,7 @@ export function SnowfallBackground({
   backgroundColor = 'transparent',
   particleColor = 'rgba(255, 255, 255, 0.8)',
   glowColor = 'rgba(229, 9, 20, 0.15)',
+  layerZIndex = 0,
 }) {
   const canvasRef = useRef(null)
   const requestRef = useRef()
@@ -25,7 +26,7 @@ export function SnowfallBackground({
     node.className = 'snowfall-layer'
     node.style.position = 'fixed'
     node.style.inset = '0'
-    node.style.zIndex = '0'
+    node.style.zIndex = String(layerZIndex)
     node.style.pointerEvents = 'none'
     node.style.mixBlendMode = 'normal'
     document.body.appendChild(node)
@@ -35,6 +36,12 @@ export function SnowfallBackground({
       document.body.removeChild(node)
     }
   }, [])
+
+  useEffect(() => {
+    if (portalContainer) {
+      portalContainer.style.zIndex = String(layerZIndex)
+    }
+  }, [portalContainer, layerZIndex])
 
   useEffect(() => {
     if (!portalContainer) return

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useEffect, useState, useRef } from 'react'
 import NeonButton from '../ui/NeonButton'
@@ -187,7 +188,7 @@ function LightningEffect({ hue = 230, speed = 1.6, intensity = 0.6, size = 2 }) 
   )
 }
 
-export default function HomeHero() {
+export default function HomeHero({ themeMode = 'normal' }) {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   const [enableParallax, setEnableParallax] = useState(false)
@@ -195,6 +196,14 @@ export default function HomeHero() {
   const springY = useSpring(mouseY, { stiffness: 40, damping: 12 })
   const moveX = useTransform(springX, [-200, 200], [-15, 15])
   const moveY = useTransform(springY, [-200, 200], [-15, 15])
+  const isUpsideDown = themeMode === 'upside-down'
+  const lightningHue = isUpsideDown ? 205 : 360
+  const radialGlowClass = isUpsideDown
+    ? 'bg-gradient-to-b from-[#4cc9f0]/25 to-transparent'
+    : 'bg-gradient-to-b from-stRed/20 to-transparent'
+  const parallaxOverlayClass = isUpsideDown
+    ? 'bg-[radial-gradient(circle_at_top,_rgba(76,201,240,0.16),_transparent_60%)]'
+    : 'bg-[radial-gradient(circle_at_top,_rgba(229,9,20,0.15),_transparent_55%)]'
 
   useEffect(() => {
     const pointerQuery = window.matchMedia('(pointer: fine)')
@@ -241,13 +250,15 @@ export default function HomeHero() {
     <section id="home" className="relative flex min-h-screen items-center overflow-visible">
       {/* Lightning effect background */}
       <div className="absolute inset-0 -z-10 h-full w-full">
-        <LightningEffect hue={360} speed={1.6} intensity={0.5} size={2} />
+        <LightningEffect hue={lightningHue} speed={1.6} intensity={0.55} size={2} />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/70" />
 
         {/* Radial gradient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-gradient-to-b from-stRed/20 to-transparent blur-3xl" />
+        <div
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full ${radialGlowClass} blur-3xl`}
+        />
       </div>
 
       {/* Parallax overlay */}
@@ -255,7 +266,7 @@ export default function HomeHero() {
         style={enableParallax ? { x: moveX, y: moveY } : undefined}
         className="absolute inset-0 -z-10 opacity-20"
       >
-        <div className="h-full w-full bg-[radial-gradient(circle_at_top,_rgba(229,9,20,0.15),_transparent_55%)]" />
+        <div className={`h-full w-full ${parallaxOverlayClass}`} />
       </motion.div>
 
       {/* Content */}
@@ -311,4 +322,8 @@ export default function HomeHero() {
       </div>
     </section>
   )
+}
+
+HomeHero.propTypes = {
+  themeMode: PropTypes.oneOf(['normal', 'upside-down'])
 }

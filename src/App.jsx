@@ -18,7 +18,7 @@ export default function App() {
 
   const sections = useMemo(
     () => [
-      <HomeHero key="home" />,
+      <HomeHero key="home" themeMode={themeMode} />,
       <AboutSection key="about" />,
       <ExperienceSection key="experience" />,
       <SkillsSection key="skills" />,
@@ -26,7 +26,7 @@ export default function App() {
       <CertificationsSection key="certifications" />,
       <ContactSection key="contact" />
     ],
-    []
+    [themeMode]
   )
 
   useEffect(() => {
@@ -44,6 +44,7 @@ export default function App() {
     setThemeMode((prev) => (prev === 'normal' ? 'upside-down' : 'normal'))
 
   const isUpsideDown = themeMode === 'upside-down'
+  const snowfallLayerZIndex = 24
 
   // Theme-specific snowfall colors
   const snowfallConfig = isUpsideDown
@@ -61,19 +62,29 @@ export default function App() {
       }
 
   return (
-    <div className={`app-shell ${isUpsideDown ? 'theme-upside' : ''}`}>
-      <AnimatePresence>
-        {showLoader && <PortalLoader key="portal-loader" onFinish={() => setShowLoader(false)} />}
-      </AnimatePresence>
+    <>
       <Navbar themeMode={themeMode} onToggleTheme={toggleTheme} />
-      <SnowfallBackground key={themeMode} {...snowfallConfig} />
-      <div className="grain-overlay" />
-      <div className="glitch-overlay" />
-      <div className="vignette-overlay" />
-      <main className="relative z-10 mx-auto max-w-6xl px-6 pt-0 pb-24">
-        {sections}
-        <Footer />
-      </main>
-    </div>
+      <div className={`app-shell ${isUpsideDown ? 'theme-upside' : ''}`}>
+        <AnimatePresence>
+          {showLoader && (
+            <PortalLoader key="portal-loader" onFinish={() => setShowLoader(false)} />
+          )}
+        </AnimatePresence>
+        <div className={`app-stage ${isUpsideDown ? 'upside-tone-filter' : ''}`}>
+          <SnowfallBackground
+            key={themeMode}
+            {...snowfallConfig}
+            layerZIndex={snowfallLayerZIndex}
+          />
+          <div className="grain-overlay" />
+          <div className="glitch-overlay" />
+          <div className="vignette-overlay" />
+          <main className="relative z-10 mx-auto max-w-6xl px-6 pt-0 pb-24">
+            {sections}
+            <Footer />
+          </main>
+        </div>
+      </div>
+    </>
   )
 }
