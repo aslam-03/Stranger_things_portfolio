@@ -27,7 +27,7 @@ export default function ContactSection() {
             <input
               name="name"
               required
-              className="rounded-md border border-white/10 bg-white/5 px-4 py-3 text-base text-white focus:border-stRed focus:outline-none"
+              className="rounded-md border border-white/10 bg-white/5 px-4 py-3 text-base text-white focus:border-stRed focus:outline-none focus:shadow-[0_0_15px_rgba(var(--theme-r),var(--theme-g),var(--theme-b),0.35)] transition-all duration-300"
               placeholder="Jane Hopper"
             />
           </label>
@@ -37,7 +37,7 @@ export default function ContactSection() {
               type="email"
               name="email"
               required
-              className="rounded-md border border-white/10 bg-white/5 px-4 py-3 text-base text-white focus:border-stRed focus:outline-none"
+              className="rounded-md border border-white/10 bg-white/5 px-4 py-3 text-base text-white focus:border-stRed focus:outline-none focus:shadow-[0_0_15px_rgba(var(--theme-r),var(--theme-g),var(--theme-b),0.35)] transition-all duration-300"
               placeholder="jhopper@hawkinslab.io"
             />
           </label>
@@ -48,14 +48,14 @@ export default function ContactSection() {
             name="message"
             rows="5"
             required
-            className="rounded-md border border-white/10 bg-white/5 px-4 py-3 text-base text-white focus:border-stRed focus:outline-none"
+            className="rounded-md border border-white/10 bg-white/5 px-4 py-3 text-base text-white focus:border-stRed focus:outline-none focus:shadow-[0_0_15px_rgba(var(--theme-r),var(--theme-g),var(--theme-b),0.35)] transition-all duration-300"
             placeholder="Tell me about your next anomaly..."
           />
         </label>
         <motion.button
           type="submit"
           className="mt-8 w-full rounded-full border border-stRed/60 bg-stRed px-8 py-4 text-sm uppercase tracking-[0.6em] text-white shadow-neon"
-          whileHover={{ scale: 1.02, boxShadow: '0 0 35px rgba(229,9,20,0.7)' }}
+          whileHover={{ scale: 1.02, boxShadow: '0 0 35px rgba(var(--theme-r), var(--theme-g), var(--theme-b), 0.7)' }}
           whileTap={{ scale: 0.98 }}
         >
           Contact Me

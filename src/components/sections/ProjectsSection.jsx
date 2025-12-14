@@ -22,7 +22,7 @@ export default function ProjectsSection() {
               <div className="absolute inset-0 bg-gradient-to-tr from-stRed/20 via-transparent to-stBlue/20 mix-blend-lighten" />
               <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.08),_transparent_70%)]" />
             </div>
-            <p className="text-xs uppercase tracking-[0.4em] text-stBlue">{project.tags.join(' / ')}</p>
+            <p className="text-xs uppercase tracking-[0.4em] text-stRed">{project.tags.join(' / ')}</p>
             <h3 className="mt-3 text-2xl text-stCream glitch" data-text={project.title}>
               {project.title}
             </h3>

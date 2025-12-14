@@ -16,7 +16,7 @@ export default function SkillsSection() {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-sm uppercase tracking-[0.4em] text-stBlue">{group.category}</p>
+            <p className="text-sm uppercase tracking-[0.4em] text-stRed">{group.category}</p>
             <div className="mt-5 space-y-4">
               {group.items.map((skill) => (
                 <div key={skill.label} className="space-y-1">
@@ -26,7 +26,7 @@ export default function SkillsSection() {
                   </div>
                   <div className="h-2 rounded-full bg-white/5">
                     <motion.div
-                      className="h-full rounded-full bg-gradient-to-r from-stRed via-stPurple to-stBlue"
+                      className="h-full rounded-full bg-gradient-to-r from-stRed to-stRed/60"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level * 100}%` }}
                       viewport={{ once: true }}

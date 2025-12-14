@@ -272,7 +272,7 @@ export default function HomeHero({ themeMode = 'normal' }) {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center md:text-left">
         <motion.p
-          className="text-sm uppercase tracking-[0.6em] text-stBlue"
+          className="text-sm uppercase tracking-[0.6em] text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 0.9, y: 0 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}

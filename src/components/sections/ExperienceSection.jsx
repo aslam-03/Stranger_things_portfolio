@@ -14,7 +14,7 @@ export default function ExperienceSection() {
         viewport={{ once: true, amount: 0.4 }}
         className="relative space-y-10 border-l border-stRed/20 pl-10"
       >
-        <div className="absolute left-[-6px] top-0 h-full w-[2px] bg-gradient-to-b from-stRed/60 via-stPurple/40 to-transparent" />
+        <div className="absolute left-[-6px] top-0 h-full w-[2px] bg-gradient-to-b from-stRed/60 via-stRed/30 to-transparent" />
         {experience.map((item, idx) => (
           <motion.article
             key={item.company}
@@ -23,7 +23,7 @@ export default function ExperienceSection() {
             className="glass-panel border border-white/5 p-6 transition hover:border-stRed/40"
           >
             <div className="mb-3 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-              <p className="text-sm uppercase tracking-[0.4em] text-stBlue">{item.duration}</p>
+              <p className="text-sm uppercase tracking-[0.4em] text-stRed">{item.duration}</p>
               <p className="text-xs text-stCream/60">{item.company}</p>
             </div>
             <h3 className="text-xl text-stCream">{item.role}</h3>

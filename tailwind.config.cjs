@@ -5,7 +5,7 @@ module.exports = {
       colors: {
         stDark: '#050507',
         stDarkAlt: '#0b0b0d',
-        stRed: '#e50914',
+        stRed: 'rgb(var(--theme-r), var(--theme-g), var(--theme-b))',
         stPurple: '#5b2bff',
         stBlue: '#3056d3',
         stCream: '#f3e4cf'
@@ -16,7 +16,7 @@ module.exports = {
         mono: ['Source Code Pro', 'SFMono-Regular', 'ui-monospace']
       },
       boxShadow: {
-        neon: '0 0 20px rgba(229, 9, 20, 0.55)',
+        neon: '0 0 20px rgba(var(--theme-r), var(--theme-g), var(--theme-b), 0.55)',
         glass: '0 15px 60px rgba(0, 0, 0, 0.75)'
       },
       backgroundImage: {

@@ -5,7 +5,7 @@ export default function SectionTitle({ label, subtitle }) {
   return (
     <div className="mb-10">
       <motion.p
-        className="text-sm tracking-[0.5em] text-stBlue uppercase"
+        className="text-sm tracking-[0.5em] text-stRed uppercase"
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 0.8, y: 0 }}
         viewport={{ once: true }}
