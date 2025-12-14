@@ -5,7 +5,7 @@ export const heroContent = {
   tagline:
     'Aspiring AI and Data Science graduate crafting applied ML, Generative AI, and automation projects for real teams.',
   location: 'Coimbatore, Tamil Nadu',
-  portraitUrl: '/media/suman-portrait.jpg',
+  portraitUrl: null,
   portraitAlt: 'Suman illuminated by neon red signage'
 }
 

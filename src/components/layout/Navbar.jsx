@@ -91,9 +91,9 @@ export default function Navbar({ themeMode, onToggleTheme }) {
   const getGridConfig = () => {
     if (isMobile) {
       return {
-        gridTemplate: '40px 1fr 40px',
-        gap: '8px',
-        padding: '8px 12px',
+        gridTemplate: '85px 1fr 85px',
+        gap: '4px',
+        padding: '8px 8px',
         navScale: 1,
         fontSize: '0.58rem'
       }
